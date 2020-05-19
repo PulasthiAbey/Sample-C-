@@ -1,4 +1,6 @@
 #include <iostream>
+#include <fstream>
+#include <string>
 using namespace std;
 
 //declaring the struct
@@ -19,10 +21,16 @@ struct student_tag{
     struct course_tag course_info;
 };
 
-int main()
-{
+//initializing the functions
+void read_file(student_tag []);
+
+int main(){
     student_tag student_array[100];
     //greeting message
     cout << "Welcome to the Student Management System" << endl;
     return 0;
+}
+
+void read_file(student_tag s[]){
+
 }
