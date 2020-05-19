@@ -22,15 +22,22 @@ struct student_tag{
 };
 
 //initializing the functions
-void read_file(student_tag []);
+void read_file(student_tag [], ifstream sample);
 
+//main method
 int main(){
     student_tag student_array[100];
     //greeting message
     cout << "Welcome to the Student Management System" << endl;
+
+    //creating an instance from the fstream class
+    ifstream sample;
+
+    //call read_file function
+    char x = read_file(student_array[], sample);
     return 0;
 }
 
-void read_file(student_tag s[]){
+void read_file(student_tag s[], ifstream& sample){
 
 }
