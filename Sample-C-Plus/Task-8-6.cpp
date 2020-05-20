@@ -2,7 +2,7 @@
 using namespace std;
 //initializing the functions
 void calcVolts(int current[10], int voltage[10], int resistance[10]);
-void dispVolts(int *&arr1[10], int *&arr2[10], int *&arr3[10]);
+void dispVolts(int *arr1[10], int *arr2[10], int *arr3[10]);
 
 int main(){
     //initalizing the arrays
@@ -28,9 +28,9 @@ void calcVolts(int current[10], int voltage[10], int resistance[10]){
     }
 }
 
-void dispVolts(int *&arr1[10], int *&arr2[10], int *&arr3[10]){
+void dispVolts(int *arr1[10], int *arr2[10], int *arr3[10]){
     cout<<"Current \t Resistance \t Voltage"<<endl;
     for (int j=0; j<10; j++){
-        cout<<arr1[j]<<" \t"<<arr2[j]<<" \t"<<arr3[j]<<endl;
+        cout<<*&arr1[j]<<" \t"<<*&arr2[j]<<" \t"<<*&arr3[j]<<endl;
     }
 }
