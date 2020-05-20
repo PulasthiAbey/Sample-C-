@@ -5,16 +5,21 @@ using namespace std;
 void reorder(int *a, int *b, int *c);
 int main(){
     //initialize variables
-    int a,b,c;
+    int aa,bb,cc;
 
     //get the inputs from the user
     cout<<"Insert three integers"<<endl;
-    cin>>a;
-    cin>>b;
-    cin>>c;
+    cin>>aa;
+    cin>>bb;
+    cin>>cc;
+
+    //assigning the pointers
+    int * a = & aa;
+    int * b = & bb;
+    int * c = & cc;
 
     //call the re-order function
-    reorder(*a, *b, *c);
+    reorder(a, b, c);
     return 0;
 }
 
