@@ -34,10 +34,18 @@ int main(){
     ifstream sample;
 
     //call read_file function
-    char x = read_file(student_array[], sample);
+    read_file(student_array, &sample);
     return 0;
 }
 
-void read_file(student_tag s[], ifstream& sample){
+void read_file(student_tag s[], ifstream &sample){
+    //opening and checking for errors
+    sample.open("Students.txt");
+    if(sample.fail()){
+        cerr<<"error while opening the file"<<endl;
+        exit(1);
+    }
+
+    
 
 }
