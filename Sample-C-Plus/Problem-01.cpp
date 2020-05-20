@@ -46,6 +46,6 @@ void read_file(student_tag s[], ifstream &sample){
         exit(1);
     }
 
-    
+
 
 }
