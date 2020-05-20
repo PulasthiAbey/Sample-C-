@@ -34,7 +34,7 @@ int main(){
     ifstream sample;
 
     //call read_file function
-    read_file(student_array, &sample);
+    //read_file(student_array, &sample);
     return 0;
 }
 
@@ -46,6 +46,13 @@ void read_file(student_tag s[], ifstream &sample){
         exit(1);
     }
 
+    int count=0;
+    while(!sample.eof()){
+        for (int i=0; i<sample.eof(); i++){
+            //sample>>s[i];
+            count++; 
+        }
+    }
 
 
 }
