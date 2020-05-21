@@ -63,6 +63,13 @@ int main(){
     return 0;
 }
 
+//add album function
 void add_album(album w){
+    cout<<"Enter Album Name : ";
+    cin>>w.album_name;
+    
+    cout<<"Enter genre\n \t0-->pop \t1-->Jazz \t2-->Classic"<<endl;
+    cin>>w.kind;
 
+    
 }
