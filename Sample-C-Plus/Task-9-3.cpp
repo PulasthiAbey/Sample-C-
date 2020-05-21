@@ -22,6 +22,9 @@ struct album {
 //initializing the functions
 void add_album(album);
 int initiateFunction();
+void print_all_album(album);
+void select_track_to_play(album);
+int exit();
 
 //main method
 int main(){
@@ -44,15 +47,15 @@ int main(){
     }
     else {
         if (x==2){
-
+            print_all_album(w);
         }
         else {
             if (x==3) {
-
+                select_track_to_play(w);
             }
             else {
                 if (x==4){
-
+                    exit();
                 }
                 else {
                     cout<<"The inserted respose is not calid. Please run the program again"<<endl;  
@@ -95,6 +98,8 @@ void add_album(album w){
     cout<<"enter the number of tracks in the album : ";
     cin>>y;
 
+    w.trach_number=y;
+
     cout<<"Enter the track names"<<endl;
     while (y!=0) {
         cin>>w.tracks[y];
@@ -106,5 +111,79 @@ void add_album(album w){
     cout<<endl<<endl;
 
     int val = initiateFunction();
+
+    //determinging the functions and activities
+    if(val==1){
+        add_album(w);
+    }
+    else {
+        if (val==2){
+            print_all_album(w);
+        }
+        else {
+            if (val==3) {
+                select_track_to_play(w);
+            }
+            else {
+                if (val==4){
+                    exit();
+                }
+                else {
+                    cout<<"The inserted respose is not calid. Please run the program again"<<endl;  
+                }
+            }
+        }
+    }
     
+}
+
+void print_all_album(album w){
+    //displaying the values
+    cout<<"The Album Name is : "<<w.album_name<<endl;
+    cout<<"The Genre of the album : "<<w.kind<<endl;
+    cout<<"No of tracks : "<<w.trach_number;
+    cout<<"The tracks are : "<<endl;
+    for (int i=0; i<w.trach_number; i++) {
+        cout<<w.tracks[i]<<endl;;
+    }
+    cout<<"Tracks are located at "<<w.tracklocation<<endl;
+
+    int val = initiateFunction();
+
+    //determinging the functions and activities
+    if(val==1){
+        add_album(w);
+    }
+    else {
+        if (val==2){
+            print_all_album(w);
+        }
+        else {
+            if (val==3) {
+                select_track_to_play(w);
+            }
+            else {
+                if (val==4){
+                    exit();
+                }
+                else {
+                    cout<<"The inserted respose is not calid. Please run the program again"<<endl;  
+                }
+            }
+        }
+    }
+    
+}
+
+void select_track_to_play(album w) {
+    //getting the trak name
+    cout<<"Select a track to play :";
+    string name;
+    cin>>name;
+
+
+}
+
+int exit() {
+    return 0;
 }
