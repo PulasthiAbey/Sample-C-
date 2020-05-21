@@ -3,7 +3,7 @@
 using namespace std;
 
 //initializing the functions
-struct Emp get_data(Emp []);
+struct Emp get_data(Emp [], int count);
 void print_data(struct Emp[], int);
 double get_average(struct Emp*, int,string);
 double get_salary(struct Emp[], string);
@@ -26,16 +26,18 @@ int main(){
     //declaring the arrays
     Emp employee[5];
 
+    int count = 0;
+    cout<<"Insert the Number of Employees : ";
+    cin>>count;
+
     //calling the functions
-    get_data(employee);    
+    get_data(employee, count);    
 
     return 0;
 }
 
-Emp get_data(Emp w[5]){
-    int count = 0;
-    cout<<"Insert the Number of Employees : ";
-    cin>>count;
+Emp get_data(Emp w[5], int count){
+    
 
     //insert details to the array
     while (count!=0){
@@ -56,7 +58,4 @@ Emp get_data(Emp w[5]){
 
         count--;
     }
-
-    return w;   
-
 }
