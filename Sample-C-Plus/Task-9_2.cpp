@@ -27,15 +27,16 @@ int main(){
     Emp employee[5];
 
     int count = 0;
-    cout<<"Insert the Number of Employees : ";
+    cout<<"Insert the Number of Employees (Maximum = 5) : ";
     cin>>count;
 
     //calling the functions
     get_data(employee, count);    
-
+    print_data(employee, count);
     return 0;
 }
 
+//read data for the array of structure
 Emp get_data(Emp w[5], int count){
     
 
@@ -58,4 +59,8 @@ Emp get_data(Emp w[5], int count){
 
         count--;
     }
+
+    cout<<endl<<endl;
+
+    return w[count];
 }
