@@ -4,8 +4,8 @@ using namespace std;
 
 //initializing the functions
 struct Emp get_data(Emp [], int count);
-void print_data(struct Emp[], int);
-double get_average(struct Emp*, int,string);
+void print_data(Emp[], int count);
+double get_average(Emp [], int count, string companyName);
 double get_salary(struct Emp[], string);
 
 //initializing the structs
@@ -26,13 +26,18 @@ int main(){
     //declaring the arrays
     Emp employee[5];
 
-    int count = 0;
-    cout<<"Insert the Number of Employees (Maximum = 5) : ";
-    cin>>count;
-
+    int count = 5;
+   
     //calling the functions
-    get_data(employee, count);    
-    print_data(employee, count);
+    get_data(employee, 5);    
+    print_data(employee, 5);
+
+    cout<<"Insert the company name you need : ";
+    string company;
+    cin>>company;
+
+    //call the average function
+    get_average(employee, count, company);
     return 0;
 }
 
@@ -57,10 +62,37 @@ Emp get_data(Emp w[5], int count){
         cout<<"Insert company ID : ";
         cin>>w[count].cmp_detail.company_id;
 
+        cout<<endl<<endl;
+
         count--;
     }
 
-    cout<<endl<<endl;
+   
 
     return w[count];
+}
+
+//print data form the struct
+void print_data(Emp w[5], int count){
+    while (count!=0) {
+        cout<<"Employee Name   : "<<w[count].emp_name<<endl;
+        cout<<"Employee ID     : "<<w[count].emp_id<<endl;
+        cout<<"Employee Salary : "<<w[count].salary<<endl;
+        cout<<"Company Name    : "<<w[count].cmp_detail.company_name<<endl;
+        cout<<"Company ID      : "<<w[count].cmp_detail.company_id<<endl;
+
+        cout<<endl<<endl;
+        count--;
+    }
+}
+
+//calculate the average salary for the each company
+double get_average(Emp w[5], int count, string companyName){
+    double avg;
+
+    enum companies = {w[0].cmp_detail.company_name, w[1].cmp_detail.company_name, w[2].cmp_detail.company_name, w[3].cmp_detail.company_name, w[4].cmp_detail.company_name};
+    
+
+
+    return avg;
 }
