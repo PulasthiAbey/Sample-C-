@@ -18,7 +18,7 @@ struct Emp{
     string emp_name;
     string emp_id;
     double salary;
-    struct company_detail cmp_detail;
+    company_detail cmp_detail;
 };
 
 int main(){
@@ -32,7 +32,7 @@ int main(){
     return 0;
 }
 
-struct Emp get_data(Emp w[5]){
+Emp get_data(Emp w[5]){
     int count = 0;
     cout<<"Insert the Number of Employees : ";
     cin>>count;
@@ -41,7 +41,22 @@ struct Emp get_data(Emp w[5]){
     while (count!=0){
         cout<<"Insert the name of the employee : ";
         cin>>w[count].emp_name;
+
+        cout<<"Insert the Employee ID : ";
+        cin>>w[count].emp_id;
+
+        cout<<"Insert the employee salary : ";
+        cin>>w[count].salary;
+
+        cout<<"Insert Company Name : ";
+        cin>>w[count].cmp_detail.company_name;
+
+        cout<<"Insert company ID : ";
+        cin>>w[count].cmp_detail.company_id;
+
+        count--;
     }
-    
+
+    return w;   
 
 }
