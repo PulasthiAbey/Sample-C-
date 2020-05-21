@@ -6,7 +6,7 @@ using namespace std;
 struct Emp get_data(Emp [], int count);
 void print_data(Emp[], int count);
 double get_average(Emp [], int count, string companyName);
-double get_salary(struct Emp[], string);
+double get_salary(Emp[], string name);
 
 //initializing the structs
 struct company_detail{
@@ -21,6 +21,14 @@ struct Emp{
     company_detail cmp_detail;
 };
 
+/*enum companies {
+    w[0].cmp_detail.company_name, 
+    w[1].cmp_detail.company_name, 
+    w[2].cmp_detail.company_name, 
+    w[3].cmp_detail.company_name, 
+    w[4].cmp_detail.company_name
+};*/
+
 int main(){
 
     //declaring the arrays
@@ -32,12 +40,21 @@ int main(){
     get_data(employee, 5);    
     print_data(employee, 5);
 
+    //insert the company name
     cout<<"Insert the company name you need : ";
     string company;
     cin>>company;
 
     //call the average function
     get_average(employee, count, company);
+
+    //insert the the employee name for the salary calculations
+    cout<<"Insert the name of the employee :";
+    string name;
+    cin>>name;
+
+    //call the salary function
+    get_salary(employee, name);
     return 0;
 }
 
@@ -89,10 +106,41 @@ void print_data(Emp w[5], int count){
 //calculate the average salary for the each company
 double get_average(Emp w[5], int count, string companyName){
     double avg;
-
-    enum companies = {w[0].cmp_detail.company_name, w[1].cmp_detail.company_name, w[2].cmp_detail.company_name, w[3].cmp_detail.company_name, w[4].cmp_detail.company_name};
+    int num = 0;
+    double salary = 0.00;
     
+    //counting the company apearances
+    while (count!=0) {
+        if(w[count].cmp_detail.company_name==companyName){
+          num++;
+          salary = salary + w[count].salary;  
+        }
+        else{
 
+        }
+    }
+       
+    avg = salary / (double)num;
+    cout<<"The average salary of "<<companyName<<" company is "<<avg<<endl;
 
     return avg;
+}
+
+//getting the salary of an employee
+double get_salary(Emp w[5], string name){
+    double salary;
+    int count = 5;
+
+    //finding the salary value of the employee
+    while (count!=0){
+        if (w[count].emp_name == name){
+            cout<<"Salary of the "<<name<<" employee is "<<w[count].salary;
+            salary = w[count].salary;
+        }
+        else{
+
+        }
+    }
+
+    return salary;
 }
