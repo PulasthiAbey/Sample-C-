@@ -21,14 +21,6 @@ struct Emp{
     company_detail cmp_detail;
 };
 
-/*enum companies {
-    w[0].cmp_detail.company_name, 
-    w[1].cmp_detail.company_name, 
-    w[2].cmp_detail.company_name, 
-    w[3].cmp_detail.company_name, 
-    w[4].cmp_detail.company_name
-};*/
-
 int main(){
 
     //declaring the arrays
