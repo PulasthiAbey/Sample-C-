@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <windows.h>
 using namespace std;
 
 //initializin the enum for genre
@@ -181,8 +182,33 @@ void select_track_to_play(album w) {
     string name;
     cin>>name;
 
-    
+    //play the sound track
+    bool played = PlaySound(name, NULL, SND_SYNC);
 
+    int val = initiateFunction();
+
+    //determinging the functions and activities
+    if(val==1){
+        add_album(w);
+    }
+    else {
+        if (val==2){
+            print_all_album(w);
+        }
+        else {
+            if (val==3) {
+                select_track_to_play(w);
+            }
+            else {
+                if (val==4){
+                    exit();
+                }
+                else {
+                    cout<<"The inserted respose is not calid. Please run the program again"<<endl;  
+                }
+            }
+        }
+    }
 
 }
 
