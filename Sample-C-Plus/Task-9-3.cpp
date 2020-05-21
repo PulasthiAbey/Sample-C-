@@ -21,6 +21,7 @@ struct album {
 
 //initializing the functions
 void add_album(album);
+int initiateFunction();
 
 //main method
 int main(){
@@ -63,13 +64,47 @@ int main(){
     return 0;
 }
 
+//initializing function
+int initiateFunction(){
+    int n=0;
+
+    cout<<"Enter the Option"<<endl;
+    cout<<"\t 1 to add an album"<<endl;
+    cout<<"\t 2 to print an album"<<endl;
+    cout<<"\t 3 to play an album"<<endl;
+    cout<<"\t 4 Exit"<<endl;
+
+    cin>>n;
+
+    return n;
+}
+
+
 //add album function
 void add_album(album w){
+    int x,y;
+
     cout<<"Enter Album Name : ";
     cin>>w.album_name;
     
     cout<<"Enter genre\n \t0-->pop \t1-->Jazz \t2-->Classic"<<endl;
-    cin>>w.kind;
+    cin>>x;
 
+    w.kind = static_cast<genre>(x);
+
+    cout<<"enter the number of tracks in the album : ";
+    cin>>y;
+
+    cout<<"Enter the track names"<<endl;
+    while (y!=0) {
+        cin>>w.tracks[y];
+        y--;
+    }
+
+    cout<<"Enter the file location for the tracks : ";
+    cin>>w.tracklocation;
+    cout<<endl<<endl;
+
+    int val = initiateFunction();
     
 }
