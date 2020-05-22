@@ -69,22 +69,24 @@ int main(){
         menu();
         break;
     }
-    case 4:
+    case 4:{
         find_maximum(student_array, count);
         menu();
         break;
-
-    case 5:
+    }
+    case 5:{
         update_file();
         menu();
         break;
-
+    }
     case 6:
         quite();
         menu();
         break;
     
     default:
+        cout<<"Response is not valid"<<endl;
+        menu();
         break;
     }
 
