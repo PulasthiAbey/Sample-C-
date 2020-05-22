@@ -23,7 +23,7 @@ struct student_tag{
 };
 
 //initializing the functions
-void read_file(student_tag [], ifstream sample);
+void read_file(student_tag [], ifstream &sample);
 
 //main method
 int main(){
@@ -33,29 +33,26 @@ int main(){
 
     //creating an instance from the fstream class
     ifstream sample;
-
     //call read_file function
-    //read_file(student_array, &sample);
+    read_file(student_array, sample);
     return 0;
 }
 
-void read_file(student_tag s[], ifstream *&sample){
-
+void read_file(student_tag s[], ifstream &sample){
+    //creating a temparary struct and count varible
     student_tag temp;
+    int count = 0;
+
     //opening and checking for errors
-    sample->open("Students.txt");
-    if(sample->fail()){
+    sample.open("Students.txt");
+    if(sample.fail()){
         cerr<<"error while opening the file"<<endl;
         exit(1);
     }
-
-    sample>>temp.student_info.name;
-
-
-
-
-
-    cout<<temp.student_info.name;
-
-
+    while (sample.eof()) {
+        sample>>temp.student_info.name>>temp.student_info.id>>temp.course_info.course_name>>temp.course_info.no_of_units>>temp.course_info.marks[0]>>temp.course_info.marks[1]>>temp.course_info.marks[2]>>temp.course_info.marks[3];
+        s[count]=temp;
+        count++;
+    }
+    
 }
