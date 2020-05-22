@@ -8,17 +8,19 @@ struct node {
 }; 
 
 //initializing functions
-void get_numbers(int arr[], , node *&head, node *&last);
-void sort(int arr[], , node *&head, node *&last);
+void get_numbers(int arr[], node *&head, node *&last);
+void sort(int arr[], node *&head, node *&last);
 bool isEmpty(node *head);
 void insertFirstElement(node *&head, node *&last, int number);
-void insert(node *&head, node *&last, int number);
+void insert(node *&head, node *&last, int arr[]);
 void showList(node *current);
 
 //main method
 int main () {
+    //creating the instances
     node *head = NULL;
     node *last = NULL;
+    int arr[10];
 
     get_numbers(arr, head, last);
     return 0;
@@ -35,7 +37,24 @@ void get_numbers(int arr[10], node *&head, node *&last){
 }
 
 //sort the numbers
-void sort(int arr[10], , node *&head, node *&last){
+void sort(int arr[10], node *&head, node *&last){
+    int temp=0, pass=0;
+    for(int i = 0; i<10; i++) {
+        for(int j = i+1; j<10; j++){
+            if(arr[j] < arr[i]) {
+                temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+            }
+        }
+        pass++;
+    }
+
+    //insert the elements 
+    insert(head, last, arr);
+
+    //display numbers
+    showList(head);
 
 }
 
@@ -59,16 +78,19 @@ void insertFirstElement(node *&head, node *&last, int number){
 }
 
 //insert into the nodes
-void insert(node *&head, node *&last, int number){
+void insert(node *&head, node *&last, int arr[10]){
     if (isEmpty(head)){
-        insertFirstElement(head, last, number);
+        insertFirstElement(head, last, arr[0]);
     }
     else {
         node *temp = new node;
-        temp->numbers = number;
-        temp->next = NULL;
-        last->next = temp;
-        last = temp; 
+        for (int k=1; k<10; k++) {
+            temp->numbers = arr[k];
+            temp->next = NULL;
+            last->next = temp;
+            last = temp;
+        }
+         
     }
 }
 
