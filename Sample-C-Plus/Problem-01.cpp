@@ -42,7 +42,7 @@ int main(){
 void read_file(student_tag s[], ifstream &sample){
     //creating a temparary struct and count varible
     student_tag temp;
-    int count = 0;
+    int count = 0, total = 0;
 
     //opening and checking for errors
     sample.open("Students.txt");
@@ -52,6 +52,11 @@ void read_file(student_tag s[], ifstream &sample){
     }
     while (sample.eof()) {
         sample>>temp.student_info.name>>temp.student_info.id>>temp.course_info.course_name>>temp.course_info.no_of_units>>temp.course_info.marks[0]>>temp.course_info.marks[1]>>temp.course_info.marks[2]>>temp.course_info.marks[3];
+        for (int i = 0; i<4; i++) {
+            total = total + temp.course_info.marks[i]; 
+        }
+        temp.course_info.avg = total/4;
+        
         s[count]=temp;
         count++;
     }
