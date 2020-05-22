@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstdlib>
 using namespace std;
 
 //declaring the struct
@@ -38,20 +39,23 @@ int main(){
     return 0;
 }
 
-void read_file(student_tag s[], ifstream &sample){
+void read_file(student_tag s[], ifstream *&sample){
+
+    student_tag temp;
     //opening and checking for errors
-    sample.open("Students.txt");
-    if(sample.fail()){
+    sample->open("Students.txt");
+    if(sample->fail()){
         cerr<<"error while opening the file"<<endl;
         exit(1);
     }
 
-    int count=0;
-    while(!sample.eof()){
-        for (int i=0; i<sample.eof(); i++){
-            //sample>>s[i];
-            count++; 
+    int count=1;
+    while(!sample->eof()){
+        for (int i=0; i<4; i++){
+            
         }
+
+        count++; 
     }
 
 
