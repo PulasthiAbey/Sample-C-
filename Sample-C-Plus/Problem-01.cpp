@@ -30,6 +30,9 @@ void read_file(student_tag [], ifstream &sample);
 int menu();
 void display_students(student_tag [], int num);
 void sort(student_tag [], int num);
+void search(student_tag [], int num, string name);
+void find_maximum(student_tag [], int num);
+void update_file();
 
 //main method
 int main(){
@@ -46,12 +49,36 @@ int main(){
 
     switch (x)
     {
-    case 1:
+    case 1:{
         display_students(student_array, count);
         menu();
         break;
+    }
+    case 2:{
+        sort(student_array, count);
+        menu();
+        break;
+    }
+    case 3:{
+        string name;
+        cout<<"Insert the name of the studnet : ";
+        cin>>name;
+        //calling the search function
+        search(student_array, count, name);
+        menu();
+        break;
+    }
+    case 4:
+        find_maximum(student_array, count);
+        menu();
+        break;
 
-    case 2:
+    case 5:
+        update_file();
+        menu();
+        break;
+
+    case 6:
         sort(student_array, count);
         menu();
         break;
@@ -116,3 +143,23 @@ void sort(student_tag s[], int num) {
 
 }
 
+//search function
+void search(student_tag [], int num, string name){
+    //return num;
+}
+
+//calculating the maximum average value
+void find_maximum(student_tag s[], int num){
+
+}
+
+//update the text file
+void update_file(){
+
+}
+
+//quit the program
+int quite(){
+    cout<<"Thank you for being with us\n\t\t\tGOOD BYE!";
+    return 0;
+}
