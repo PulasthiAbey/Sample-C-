@@ -30,6 +30,7 @@ int main() {
     return 0;
 }
 
+//empty function
 bool isEmpty(studentname *head){
     if (head == NULL) {
         return true;
