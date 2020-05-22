@@ -33,6 +33,7 @@ void sort(student_tag [], int num);
 void search(student_tag [], int num, string name);
 void find_maximum(student_tag [], int num);
 void update_file();
+int quite();
 
 //main method
 int main(){
@@ -79,7 +80,7 @@ int main(){
         break;
 
     case 6:
-        sort(student_array, count);
+        quite();
         menu();
         break;
     
@@ -96,9 +97,9 @@ void read_file(student_tag s[], ifstream &sample){
     //creating a temparary struct and count varible
     student_tag temp;
     int total = 0;
-
+   // fstream sample("Students.txt");
     //opening and checking for errors
-    sample.open("Students.txt");
+   sample.open("Students.txt");
     if(sample.fail()){
         cerr<<"error while opening the file"<<endl;
         exit(1);
