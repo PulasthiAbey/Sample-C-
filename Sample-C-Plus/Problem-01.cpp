@@ -49,14 +49,13 @@ void read_file(student_tag s[], ifstream *&sample){
         exit(1);
     }
 
-    int count=1;
-    while(!sample->eof()){
-        for (int i=0; i<4; i++){
-            
-        }
+    sample>>temp.student_info.name;
 
-        count++; 
-    }
+
+
+
+
+    cout<<temp.student_info.name;
 
 
 }
