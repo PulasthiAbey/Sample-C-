@@ -38,3 +38,17 @@ void insertFirstElement(node *&head, node *&last, int number){
     head = temp;
     last = temp;
 }
+
+//insert into the nodes
+void insert(node *&head, node *&last, int number){
+    if (isEmpty(head)){
+        insertFirstElement(head, last, number);
+    }
+    else {
+        node *temp = new node;
+        temp->numbers = number;
+        temp->next = NULL;
+        last->next = temp;
+        last = temp; 
+    }
+}
