@@ -4,6 +4,9 @@
 #include <cstdlib>
 using namespace std;
 
+//global varibles
+int count = 0;
+
 //declaring the struct
 struct person_tag{
     string name;
@@ -25,6 +28,8 @@ struct student_tag{
 //initializing the functions
 void read_file(student_tag [], ifstream &sample);
 int menu();
+void display_students(student_tag [], int num);
+void sort(student_tag [], int num);
 
 //main method
 int main(){
@@ -42,7 +47,13 @@ int main(){
     switch (x)
     {
     case 1:
-        
+        display_students(student_array, count);
+        menu();
+        break;
+
+    case 2:
+        sort(student_array, count);
+        menu();
         break;
     
     default:
@@ -57,7 +68,7 @@ int main(){
 void read_file(student_tag s[], ifstream &sample){
     //creating a temparary struct and count varible
     student_tag temp;
-    int count = 0, total = 0;
+    int total = 0;
 
     //opening and checking for errors
     sample.open("Students.txt");
@@ -90,5 +101,18 @@ int menu(){
     cout<<"6 --> Quit program"<<endl;
 
     cin>>response;
+
+    //pass the user response
     return response;
 }
+
+//display function
+void display_students(student_tag s[], int num){
+
+}
+
+//sorting the arrays as the user required
+void sort(student_tag s[], int num) {
+
+}
+
