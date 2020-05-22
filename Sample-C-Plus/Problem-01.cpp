@@ -24,6 +24,7 @@ struct student_tag{
 
 //initializing the functions
 void read_file(student_tag [], ifstream &sample);
+int menu();
 
 //main method
 int main(){
@@ -35,6 +36,20 @@ int main(){
     ifstream sample;
     //call read_file function
     read_file(student_array, sample);
+    //calling the menu function
+    int x = menu();
+
+    switch (x)
+    {
+    case 1:
+        
+        break;
+    
+    default:
+        break;
+    }
+
+
     return 0;
 }
 
@@ -56,9 +71,24 @@ void read_file(student_tag s[], ifstream &sample){
             total = total + temp.course_info.marks[i]; 
         }
         temp.course_info.avg = total/4;
-        
+
         s[count]=temp;
         count++;
     }
     
+}
+
+int menu(){
+    int response=0;
+
+    //displaying the options
+    cout<<"1 --> Display students’ details"<<endl;
+    cout<<"2 --> Sort the students’ details"<<endl;
+    cout<<"3 --> Search for a student’s mark"<<endl;
+    cout<<"4 --> Find the details of student with the largest average"<<endl;
+    cout<<"5 --> Add new student to the record"<<endl;
+    cout<<"6 --> Quit program"<<endl;
+
+    cin>>response;
+    return response;
 }
