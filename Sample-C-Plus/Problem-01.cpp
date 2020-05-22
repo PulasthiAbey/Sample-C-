@@ -38,6 +38,7 @@ int main(){
     return 0;
 }
 
+//read files details into the struct array
 void read_file(student_tag s[], ifstream &sample){
     //creating a temparary struct and count varible
     student_tag temp;
