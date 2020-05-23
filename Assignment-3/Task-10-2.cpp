@@ -18,11 +18,11 @@ int main() {
     studentname *last = NULL;
 
     //calling functions ffor the insertions
-    insertFirstElement(head, last, 'P');
-    insert(head, last, 'o');
-    insert(head, last, 'n');
-    insert(head, last, 't');
-    insert(head, last, 'i');
+    insertFirstElement(head, last, 'D');
+    insert(head, last, 'h');
+    insert(head, last, 'a');
+    insert(head, last, 'r');
+    insert(head, last, 'm');
 
     //diplaying the linked list
     showList(head);
