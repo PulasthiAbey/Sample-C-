@@ -150,7 +150,10 @@ void display_students(student_tag s[], int num){
 
 //sorting the arrays as the user required
 void sort(student_tag s[], int num) {
-    
+    cout<<"1 -> Sort by Name\n";
+    cout<<"2 -> Sort by Average Marks\n";
+    int method;
+    cin>>method;
 }
 
 //search function
@@ -163,20 +166,15 @@ void search(student_tag s[], int num, string name){
     cin>>method;
 
     if (method == 1) {
-        int first, last, middle;
-        int nunm = 4;
-        cout<<"Enter the number that you want to search:"; 
-        cin>>num;
-	    first = 0;
-	    last = nunm-1;
-	    middle = (first+last)/2;
-	    
-        while (first <= last) {
-	        if(arr[middle] < num) {
+        int first = 0;
+	    int last = num-1;
+	    int middle = (first+last)/2;
+	    while (first <= last){
+	        if(s[middle].student_info.name != name){
 		        first = middle + 1;
-	        }
-	        else if(arr[middle] == num) {
-		        cout<<num<<" found in the array at the location "<<middle+1<<"\n"; 
+     	    }
+	        else if(s[middle].student_info.name == name){
+		        cout<<name<<" found in the location "<<middle+1<<"\n"; 
                 break; 
             } 
             else { 
@@ -184,12 +182,24 @@ void search(student_tag s[], int num, string name){
             } 
             middle = (first + last)/2; 
         } 
-        if(first > last) {
-	        cout<<num<<" not found in the array";
+        if(first > last){
+	        cout<<name<<" not found";
 	    }
     }
     else {
         if (method == 2) {
+            for (int j = 0; j < num; j++ ){
+                if (s[j].student_info.name == name) {
+                   cout<<name<<" found in the location "<<j<<endl;
+                }
+                else {
+                    cout << "didn't find it" << endl;
+                }
+            }
+        }
+        else {
+            cout<<"Invalid input try again\n";
+            search(s, count, name);
 
         }
     }
