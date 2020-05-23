@@ -33,6 +33,7 @@ void sort(student_tag [], int num);
 void search(student_tag [], int num, string name);
 void find_maximum(student_tag [], int num);
 void update_file();
+int quite();
 
 //main method
 int main(){
@@ -68,22 +69,24 @@ int main(){
         menu();
         break;
     }
-    case 4:
+    case 4:{
         find_maximum(student_array, count);
         menu();
         break;
-
-    case 5:
+    }
+    case 5:{
         update_file();
         menu();
         break;
-
+    }
     case 6:
-        sort(student_array, count);
+        quite();
         menu();
         break;
     
     default:
+        cout<<"Response is not valid"<<endl;
+        menu();
         break;
     }
 
@@ -96,9 +99,9 @@ void read_file(student_tag s[], ifstream &sample){
     //creating a temparary struct and count varible
     student_tag temp;
     int total = 0;
-
+   // fstream sample("Students.txt");
     //opening and checking for errors
-    sample.open("Students.txt");
+   sample.open("Students.txt");
     if(sample.fail()){
         cerr<<"error while opening the file"<<endl;
         exit(1);
@@ -135,12 +138,32 @@ int menu(){
 
 //display function
 void display_students(student_tag s[], int num){
-
+    for (int i=0; i<num; i++) {
+        cout<<"Student Name     : "<<s[i].student_info.name<<endl;
+        cout<<"Student ID       : "<<s[i].student_info.id<<endl;
+        cout<<"Course Name      : "<<s[i].course_info.course_name<<endl;
+        cout<<"Number of Units  : "<<s[i].course_info.no_of_units<<endl;
+        cout<<"Marks            : "<<s[i].course_info.marks[0]<<", "<<s[i].course_info.marks[1]<<", "<<s[i].course_info.marks[2]<<", "<<s[i].course_info.marks[3]<<endl;
+        cout<<"Average of Marks : "<<s[i].course_info.avg<<endl;
+    }
 }
 
 //sorting the arrays as the user required
 void sort(student_tag s[], int num) {
+    cout<<"Insert the sorting method : "<<endl;
+    cout<<"1    -   Binary Search\n";
+    cout<<"2    -   Linear Search\n";
+    int method;
+    cin>>method;
 
+    if (method == 1) {
+
+    }
+    else {
+        if (method == 2) {
+            
+        }
+    }
 }
 
 //search function
