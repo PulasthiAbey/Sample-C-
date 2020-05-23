@@ -150,6 +150,12 @@ void display_students(student_tag s[], int num){
 
 //sorting the arrays as the user required
 void sort(student_tag s[], int num) {
+    
+}
+
+//search function
+void search(student_tag s[], int num, string name){
+    //return num;
     cout<<"Insert the sorting method : "<<endl;
     cout<<"1    -   Binary Search\n";
     cout<<"2    -   Linear Search\n";
@@ -157,18 +163,36 @@ void sort(student_tag s[], int num) {
     cin>>method;
 
     if (method == 1) {
-
+        int first, last, middle;
+        int nunm = 4;
+        cout<<"Enter the number that you want to search:"; 
+        cin>>num;
+	    first = 0;
+	    last = nunm-1;
+	    middle = (first+last)/2;
+	    
+        while (first <= last) {
+	        if(arr[middle] < num) {
+		        first = middle + 1;
+	        }
+	        else if(arr[middle] == num) {
+		        cout<<num<<" found in the array at the location "<<middle+1<<"\n"; 
+                break; 
+            } 
+            else { 
+                last = middle - 1; 
+            } 
+            middle = (first + last)/2; 
+        } 
+        if(first > last) {
+	        cout<<num<<" not found in the array";
+	    }
     }
     else {
         if (method == 2) {
-            
+
         }
     }
-}
-
-//search function
-void search(student_tag [], int num, string name){
-    //return num;
 }
 
 //calculating the maximum average value
