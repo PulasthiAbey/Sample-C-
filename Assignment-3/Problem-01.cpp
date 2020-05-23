@@ -2,6 +2,8 @@
 #include <fstream>
 #include <string>
 #include <cstdlib>
+#include <ncurses.h>
+#include <conio.h>
 using namespace std;
 
 //global varibles
@@ -32,8 +34,13 @@ void display_students(student_tag [], int num);
 void sort(student_tag [], int num);
 void search(student_tag [], int num, string name);
 void find_maximum(student_tag [], int num);
-void update_file();
+void update_file(student_tag []);
 int quite();
+
+//sorting functions initializing
+void sortByMarks (student_tag [], int num);
+void sortByName (student_tag [], int num);
+
 
 //main method
 int main(){
@@ -75,7 +82,7 @@ int main(){
         break;
     }
     case 5:{
-        update_file();
+        update_file(student_array);
         menu();
         break;
     }
@@ -101,7 +108,7 @@ void read_file(student_tag s[], ifstream &sample){
     int total = 0;
    // fstream sample("Students.txt");
     //opening and checking for errors
-   sample.open("Students.txt");
+   sample.open("Students.txt", ios::in, ios::out, ios::app);
     if(sample.fail()){
         cerr<<"error while opening the file"<<endl;
         exit(1);
@@ -116,6 +123,8 @@ void read_file(student_tag s[], ifstream &sample){
         s[count]=temp;
         count++;
     }
+
+    sample.close();
     
 }
 
@@ -146,6 +155,8 @@ void display_students(student_tag s[], int num){
         cout<<"Marks            : "<<s[i].course_info.marks[0]<<", "<<s[i].course_info.marks[1]<<", "<<s[i].course_info.marks[2]<<", "<<s[i].course_info.marks[3]<<endl;
         cout<<"Average of Marks : "<<s[i].course_info.avg<<endl;
     }
+
+    
 }
 
 //sorting the arrays as the user required
@@ -154,6 +165,21 @@ void sort(student_tag s[], int num) {
     cout<<"2 -> Sort by Average Marks\n";
     int method;
     cin>>method;
+
+    if (method == 1){
+        sortByName(s, num);
+    }
+    else {
+        if (method == 2 ) {
+            sortByMarks(s, num);
+        }
+        else {
+            cout<<"Invalid Input. Try Again\n";
+            sort(s, num);
+        }
+    }
+
+    
 }
 
 //search function
@@ -165,6 +191,7 @@ void search(student_tag s[], int num, string name){
     int method;
     cin>>method;
 
+    //binary search
     if (method == 1) {
         int first = 0;
 	    int last = num-1;
@@ -186,6 +213,7 @@ void search(student_tag s[], int num, string name){
 	        cout<<name<<" not found";
 	    }
     }
+    //linear search
     else {
         if (method == 2) {
             for (int j = 0; j < num; j++ ){
@@ -203,20 +231,119 @@ void search(student_tag s[], int num, string name){
 
         }
     }
+
+    
 }
 
 //calculating the maximum average value
 void find_maximum(student_tag s[], int num){
+    int i,j,temp, pass = 0;
+    for(i = 0; i<num; i++) {
+        for(j = i+1; j<num; j++) {
+            if(s[j].course_info.avg < s[i].course_info.avg) {
+            temp = s[i].course_info.avg;
+            s[i].course_info.avg = s[j].course_info.avg;
+            s[j].course_info.avg = temp;
+      }
+    }
+    pass++;
+    }
+
+    cout<<"The highest scoring student's details are...\n";
+    cout<<s[num].student_info.name<<endl;
+    cout<<s[num].student_info.id<<endl;
+    cout<<s[num].course_info.avg<<endl;
+
 
 }
 
 //update the text file
-void update_file(){
+void update_file(student_tag s[]){
+    //creating a file instance
+    fstream sample("Students.txt", ios::in, ios::out, ios::app);
+    
+    if (!sample.is_open()){
+        cout<<"Error while opening the file\n";
+    }
+    else {
+        cout<<"Insert the number of tudents you are going to add : ";
+        int num;
+        cin>>num;
 
+        //creating a temparary struct
+        student_tag temp;
+
+        for (int i=count; i<(count+num); i++){
+            cout<<"Insert the name of the student : ";
+            cin>>temp.student_info.name;
+
+            cout<<"Insert the Student ID : ";
+            cin>>temp.student_info.id;
+
+            cout<<"Insert the course name : ";
+            cin>>temp.course_info.course_name;
+
+            cout<<"Insert the number of units : ";
+            cin>>temp.course_info.no_of_units;
+
+            cout<<"Insert the marks : ";
+            for (int j=0; j<4; j++) {
+                cin>>temp.course_info.marks[j];
+            }
+
+            sample<<temp.student_info.name<<"\t"<<temp.student_info.id<<"\t"<<temp.course_info.course_name<<"\t"<<temp.course_info.no_of_units<<"\t"<<temp.course_info.marks[0]<<"\t"<<temp.course_info.marks[1]<<"\t"<<temp.course_info.marks[2]<<"\t"<<temp.course_info.marks[3];    
+        }
+    }
+
+    //calling the read file function
+    read_file(s, sample);
 }
 
 //quit the program
 int quite(){
     cout<<"Thank you for being with us\n\t\t\tGOOD BYE!";
     return 0;
+}
+
+//sort the data by the student names. 
+void sortByName (student_tag s[], int num){
+    clrscr();
+	int i, j;
+	
+    for(i=1; i<num; i++){
+		for(j=1; j<num; j++){
+			if(strcmp(s[j-1].student_info.name, s[j].student_info.name)>0){
+				strcpy(t, str[j-1]);
+				strcpy(str[j-1], str[j]);
+				strcpy(str[j], t);
+			}
+		}
+	}
+	cout<<"Names in alphabetical order : \n";
+	for(i=0; i<5; i++)
+	{
+		cout<<str[i]<<"\n";
+	}
+	getch();
+}
+
+//sort the data by the average marks. 
+void sortByMarks (student_tag s[], int num){
+
+    int i,j,temp, pass = 0;
+    for(i = 0; i<num; i++) {
+        for(j = i+1; j<num; j++) {
+            if(s[j].course_info.avg < s[i].course_info.avg) {
+            temp = s[i].course_info.avg;
+            s[i].course_info.avg = s[j].course_info.avg;
+            s[j].course_info.avg = temp;
+      }
+    }
+    pass++;
+    }
+
+    cout <<"Sorted List ...\n";
+    for(i = 0; i<num; i++) {
+        cout <<s[i].student_info.name<<"\t"<<s[i].course_info.avg<<endl;
+    }
 }
