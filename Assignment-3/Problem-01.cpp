@@ -38,7 +38,7 @@ void sort(student_tag [], int num);
 void search(student_tag [], int num, string name);
 void find_maximum(student_tag [], int num);
 void update_file(student_tag []);
-int quite();
+int quit();
 
 //sorting functions initializing
 void sortByMarks (student_tag [], int num);
@@ -55,9 +55,11 @@ int main(){
     fstream sample;
     //call read_file function
     read_file(student_array);
+    
     //calling the menu function
     int x = menu();
 
+    //looking for the choice
     switch (x)
     {
     case 1:{
@@ -90,7 +92,7 @@ int main(){
         break;
     }
     case 6:
-        quite();
+        quit();
         menu();
         break;
     
@@ -160,6 +162,51 @@ void display_students(student_tag s[], int num){
         cout<<"Average of Marks : "<<s[i].course_info.avg<<endl;
     }
 
+    //calling the menu function
+    int x = menu();
+
+    //looking for the choice
+    switch (x)
+    {
+    case 1:{
+        display_students(s, count);
+        menu();
+        break;
+    }
+    case 2:{
+        sort(s, count);
+        menu();
+        break;
+    }
+    case 3:{
+        string name;
+        cout<<"Insert the name of the studnet : ";
+        cin>>name;
+        //calling the search function
+        search(s, count, name);
+        menu();
+        break;
+    }
+    case 4:{
+        find_maximum(s, count);
+        menu();
+        break;
+    }
+    case 5:{
+        update_file(s);
+        menu();
+        break;
+    }
+    case 6:
+        quit();
+        menu();
+        break;
+    
+    default:
+        cout<<"Response is not valid"<<endl;
+        menu();
+        break;
+    }
     
 }
 
@@ -215,6 +262,51 @@ void sort(student_tag s[], int num) {
         }
     }
 
+    //calling the menu function
+    int x = menu();
+
+    //looking for the choice
+    switch (x)
+    {
+    case 1:{
+        display_students(s, count);
+        menu();
+        break;
+    }
+    case 2:{
+        sort(s, count);
+        menu();
+        break;
+    }
+    case 3:{
+        string name;
+        cout<<"Insert the name of the studnet : ";
+        cin>>name;
+        //calling the search function
+        search(s, count, name);
+        menu();
+        break;
+    }
+    case 4:{
+        find_maximum(s, count);
+        menu();
+        break;
+    }
+    case 5:{
+        update_file(s);
+        menu();
+        break;
+    }
+    case 6:
+        quit();
+        menu();
+        break;
+    
+    default:
+        cout<<"Response is not valid"<<endl;
+        menu();
+        break;
+    }
     
 }
 
@@ -268,7 +360,51 @@ void search(student_tag s[], int num, string name){
         }
     }
 
+    //calling the menu function
+    int x = menu();
+
+    //looking for the choice
+    switch (x)
+    {
+    case 1:{
+        display_students(s, count);
+        menu();
+        break;
+    }
+    case 2:{
+        sort(s, count);
+        menu();
+        break;
+    }
+    case 3:{
+        string name;
+        cout<<"Insert the name of the studnet : ";
+        cin>>name;
+        //calling the search function
+        search(s, count, name);
+        menu();
+        break;
+    }
+    case 4:{
+        find_maximum(s, count);
+        menu();
+        break;
+    }
+    case 5:{
+        update_file(s);
+        menu();
+        break;
+    }
+    case 6:
+        quit();
+        menu();
+        break;
     
+    default:
+        cout<<"Response is not valid"<<endl;
+        menu();
+        break;
+    }
 }
 
 //calculating the maximum average value
@@ -290,6 +426,51 @@ void find_maximum(student_tag s[], int num){
     cout<<s[num].student_info.id<<endl;
     cout<<s[num].course_info.avg<<endl;
 
+    //calling the menu function
+    int x = menu();
+
+    //looking for the choice
+    switch (x)
+    {
+    case 1:{
+        display_students(s, count);
+        menu();
+        break;
+    }
+    case 2:{
+        sort(s, count);
+        menu();
+        break;
+    }
+    case 3:{
+        string name;
+        cout<<"Insert the name of the studnet : ";
+        cin>>name;
+        //calling the search function
+        search(s, count, name);
+        menu();
+        break;
+    }
+    case 4:{
+        find_maximum(s, count);
+        menu();
+        break;
+    }
+    case 5:{
+        update_file(s);
+        menu();
+        break;
+    }
+    case 6:
+        quit();
+        menu();
+        break;
+    
+    default:
+        cout<<"Response is not valid"<<endl;
+        menu();
+        break;
+    }
 
 }
 
@@ -334,10 +515,56 @@ void update_file(student_tag s[]){
 
     //calling the read file function
     read_file(s);
+
+    //calling the menu function
+    int x = menu();
+
+    //looking for the choice
+    switch (x)
+    {
+    case 1:{
+        display_students(s, count);
+        menu();
+        break;
+    }
+    case 2:{
+        sort(s, count);
+        menu();
+        break;
+    }
+    case 3:{
+        string name;
+        cout<<"Insert the name of the studnet : ";
+        cin>>name;
+        //calling the search function
+        search(s, count, name);
+        menu();
+        break;
+    }
+    case 4:{
+        find_maximum(s, count);
+        menu();
+        break;
+    }
+    case 5:{
+        update_file(s);
+        menu();
+        break;
+    }
+    case 6:
+        quit();
+        menu();
+        break;
+    
+    default:
+        cout<<"Response is not valid"<<endl;
+        menu();
+        break;
+    }
 }
 
 //quit the program
-int quite(){
+int quit(){
     cout<<"Thank you for being with us\n\t\t\tGOOD BYE!\n";
     return 0;
 }
