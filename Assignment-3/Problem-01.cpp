@@ -1,9 +1,12 @@
+//this program is created to manage the student information using a multiple structs
+//Student Name : 
+//Student ID : 
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <cstdlib>
 #include <ncurses.h>
-#include <conio.h>
+//#include <conio.h>
 using namespace std;
 
 //global varibles
@@ -28,7 +31,7 @@ struct student_tag{
 };
 
 //initializing the functions
-void read_file(student_tag [], ifstream &sample);
+void read_file(student_tag []);
 int menu();
 void display_students(student_tag [], int num);
 void sort(student_tag [], int num);
@@ -49,9 +52,9 @@ int main(){
     cout << "Welcome to the Student Management System" << endl;
 
     //creating an instance from the fstream class
-    ifstream sample;
+    fstream sample;
     //call read_file function
-    read_file(student_array, sample);
+    read_file(student_array);
     //calling the menu function
     int x = menu();
 
@@ -102,13 +105,14 @@ int main(){
 }
 
 //read files details into the struct array
-void read_file(student_tag s[], ifstream &sample){
+void read_file(student_tag s[]){
     //creating a temparary struct and count varible
     student_tag temp;
     int total = 0;
-   // fstream sample("Students.txt");
+   //creating the file instance
+   fstream sample("Students.txt", ios::in | ios::out | ios::app);
     //opening and checking for errors
-   sample.open("Students.txt", ios::in, ios::out, ios::app);
+   //sample.open("Students.txt", ios::in, ios::out, ios::app);
     if(sample.fail()){
         cerr<<"error while opening the file"<<endl;
         exit(1);
@@ -167,11 +171,43 @@ void sort(student_tag s[], int num) {
     cin>>method;
 
     if (method == 1){
-        sortByName(s, num);
+        //sortByName(s, 6num);
+        clrscr();
+	    int i, j;
+	
+        for(i=1; i<num; i++){
+		    for(j=1; j<num; j++){
+			    if(strcmp(s[j-1].student_info.name, s[j].student_info.name)>0){
+				    strcpy(t, str[j-1]);
+				    strcpy(str[j-1], str[j]);
+				    strcpy(str[j], t);
+			    }
+		    }
+	    }
+	    cout<<"Names in alphabetical order : \n";
+	    for(i=0; i<5; i++){
+		    cout<<str[i]<<"\n";
+	    }
+	    getch();
     }
     else {
         if (method == 2 ) {
-            sortByMarks(s, num);
+            int i,j,temp, pass = 0;
+            for(i = 0; i<num; i++) {
+                for(j = i+1; j<num; j++) {
+                    if(s[j].course_info.avg < s[i].course_info.avg) {
+                    temp = s[i].course_info.avg;
+                    s[i].course_info.avg = s[j].course_info.avg;
+                    s[j].course_info.avg = temp;
+                    }
+                }
+                pass++;
+            }
+
+            cout <<"Sorted List ...\n";
+            for(i = 0; i<num; i++) {
+                cout <<s[i].student_info.name<<"\t"<<s[i].course_info.avg<<endl;
+            }
         }
         else {
             cout<<"Invalid Input. Try Again\n";
@@ -260,7 +296,7 @@ void find_maximum(student_tag s[], int num){
 //update the text file
 void update_file(student_tag s[]){
     //creating a file instance
-    fstream sample("Students.txt", ios::in, ios::out, ios::app);
+    fstream sample("Students.txt", ios::in | ios::out | ios::app);
     
     if (!sample.is_open()){
         cout<<"Error while opening the file\n";
@@ -294,56 +330,14 @@ void update_file(student_tag s[]){
             sample<<temp.student_info.name<<"\t"<<temp.student_info.id<<"\t"<<temp.course_info.course_name<<"\t"<<temp.course_info.no_of_units<<"\t"<<temp.course_info.marks[0]<<"\t"<<temp.course_info.marks[1]<<"\t"<<temp.course_info.marks[2]<<"\t"<<temp.course_info.marks[3];    
         }
     }
+    sample.close();
 
     //calling the read file function
-    read_file(s, sample);
+    read_file(s);
 }
 
 //quit the program
 int quite(){
-    cout<<"Thank you for being with us\n\t\t\tGOOD BYE!";
+    cout<<"Thank you for being with us\n\t\t\tGOOD BYE!\n";
     return 0;
-}
-
-//sort the data by the student names. 
-void sortByName (student_tag s[], int num){
-    clrscr();
-	int i, j;
-	
-    for(i=1; i<num; i++){
-		for(j=1; j<num; j++){
-			if(strcmp(s[j-1].student_info.name, s[j].student_info.name)>0){
-				strcpy(t, str[j-1]);
-				strcpy(str[j-1], str[j]);
-				strcpy(str[j], t);
-			}
-		}
-	}
-	cout<<"Names in alphabetical order : \n";
-	for(i=0; i<5; i++)
-	{
-		cout<<str[i]<<"\n";
-	}
-	getch();
-}
-
-//sort the data by the average marks. 
-void sortByMarks (student_tag s[], int num){
-
-    int i,j,temp, pass = 0;
-    for(i = 0; i<num; i++) {
-        for(j = i+1; j<num; j++) {
-            if(s[j].course_info.avg < s[i].course_info.avg) {
-            temp = s[i].course_info.avg;
-            s[i].course_info.avg = s[j].course_info.avg;
-            s[j].course_info.avg = temp;
-      }
-    }
-    pass++;
-    }
-
-    cout <<"Sorted List ...\n";
-    for(i = 0; i<num; i++) {
-        cout <<s[i].student_info.name<<"\t"<<s[i].course_info.avg<<endl;
-    }
 }
