@@ -1,3 +1,4 @@
+//this program implements a simple linked list 
 #include <iostream>
 using namespace std;
 

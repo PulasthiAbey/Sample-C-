@@ -1,3 +1,4 @@
+//This program implements a media playlist
 #include <iostream>
 #include <string>
 #include <windows.h>

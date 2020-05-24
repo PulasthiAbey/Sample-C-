@@ -1,3 +1,4 @@
+//this program implements the sorting of three integers which is inserted by the user according to the accending order
 #include <iostream>
 using namespace std;
 

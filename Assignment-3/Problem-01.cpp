@@ -24,7 +24,7 @@ struct course_tag{
     int marks[4];
     float avg;
 };
-
+ 
 struct student_tag{
     struct person_tag student_info;
     struct course_tag course_info;

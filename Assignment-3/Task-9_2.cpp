@@ -1,3 +1,4 @@
+//This program implements a employee management system
 #include <iostream>
 #include <iostream>
 using namespace std;

@@ -1,3 +1,4 @@
+//this program implents a linked list that contains 5 charactors.
 #include <iostream>
 using namespace std;
 
