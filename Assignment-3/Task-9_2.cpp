@@ -57,6 +57,7 @@ Emp get_data(Emp w[5], int count){
 
     //insert details to the array
     while (count!=0){
+        for (int i = 0; i<5; i++){
         cout<<"Insert the name of the employee : ";
         cin>>w[count].emp_name;
 
@@ -73,7 +74,7 @@ Emp get_data(Emp w[5], int count){
         cin>>w[count].cmp_detail.company_id;
 
         cout<<endl<<endl;
-
+        }
         count--;
     }
 

@@ -218,8 +218,7 @@ void sort(student_tag s[], int num) {
     cin>>method;
 
     if (method == 1){
-        //sortByName(s, 6num);
-        clrscr();
+        /*clrscr();
 	    int i, j;
 	
         for(i=1; i<num; i++){
@@ -235,7 +234,7 @@ void sort(student_tag s[], int num) {
 	    for(i=0; i<5; i++){
 		    cout<<str[i]<<"\n";
 	    }
-	    getch();
+	    getch();*/
     }
     else {
         if (method == 2 ) {

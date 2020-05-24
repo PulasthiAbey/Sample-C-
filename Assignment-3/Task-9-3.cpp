@@ -1,7 +1,7 @@
 //This program implements a media playlist
 #include <iostream>
 #include <string>
-#include <windows.h>
+//#include <windows.h>
 using namespace std;
 
 //initializin the enum for genre
@@ -143,7 +143,7 @@ void print_all_album(album w){
     //displaying the values
     cout<<"The Album Name is : "<<w.album_name<<endl;
     cout<<"The Genre of the album : "<<w.kind<<endl;
-    cout<<"No of tracks : "<<w.trach_number;
+    cout<<"No of tracks : "<<w.trach_number<<endl;
     cout<<"The tracks are : "<<endl;
     for (int i=0; i<w.trach_number; i++) {
         cout<<w.tracks[i]<<endl;;
@@ -182,12 +182,11 @@ void select_track_to_play(album w) {
     cout<<"Select a track to play :";
     string name;
     cin>>name;
-
+/*
     //play the sound track
     bool played = PlaySound(name, NULL, SND_SYNC);
-
+*/
     int val = initiateFunction();
-
     //determinging the functions and activities
     if(val==1){
         add_album(w);
